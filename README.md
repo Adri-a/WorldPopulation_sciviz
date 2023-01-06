@@ -12,7 +12,7 @@ Our approach consisted mainly in exploring the datasets we decided to use and fi
 
 ## Datasets used:
 - population 1950-2100: UN datasets
-- population 1800-1950: Mind Gap
+- population 1800-1950: Gap Minder
 - population 1300-1800: HYDE (the ones we used are actually part of a larger project with estimates up to 10'000 B.C.)
 
 More references (apart from simply datasets) can be found at the end of the presentation.
