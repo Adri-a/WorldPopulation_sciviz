@@ -31,7 +31,7 @@ ax.spines['left'].set_visible(False)
 ax.spines['bottom'].set_visible(False)
 
 plt.title('Crescita popolazione mondiale, 1300-2022', loc='left')
-ax.set_xlabel('Anni', size=11)
+ax.set_xlabel('Anno', size=11)
 ax.set_ylabel('% Crescita', size=11)
 
 '''
