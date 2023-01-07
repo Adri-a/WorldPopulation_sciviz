@@ -3,7 +3,7 @@ import pandas as pd
 
 def select_population(start, end):
     # anni 1950 - 2022
-    population = pd.read_csv("S11/WPP2022_TotalPopulationBySex.csv", \
+    population = pd.read_csv("datasets/WPP2022_TotalPopulationBySex.csv", \
         dtype = {'Notes' : str, 'ISO3_code' : str, 'ISO2_code' : str, 'LocTypeName' : str})
 
     # moltiplico per mettere tutto a sx della virgola
@@ -16,7 +16,7 @@ def select_population(start, end):
         return population.loc[start:end]
     
     # anni 1800 - 1950
-    population_1800 = pd.read_csv("worldPopulation_git/WorldPopulation_sciviz/datasets/GM_PopulationV6_WorldData_ByYear_1800Forward.csv", \
+    population_1800 = pd.read_csv("datasets/GM_PopulationV6_WorldData_ByYear_1800Forward.csv", \
         dtype={'geo' : str, 'name' : str, 'time' : np.int32, 'Population' : np.int64})
 
     # cambio nomi indice e colonna per adattarlo a quello che avrò dall'altro
