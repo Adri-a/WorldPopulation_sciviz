@@ -22,4 +22,5 @@ The code to analyze and manage the datasets was written entirely in Python, usin
 - Pandas
 - Numpy
 - Matplotlib
+- Folium
  
