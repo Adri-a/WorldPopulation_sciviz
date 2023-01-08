@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 from prep_population import select_population
 
-population = select_population(1300, 2022)
+population = select_population(1300, 2022, 'Medium')
 
 plt.rcParams["figure.figsize"] = (12, 4.5) # proporzioni di schermo 16:9
 

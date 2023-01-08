@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-def select_population(start, end):
+def select_population(start, end, variant):
     # anni 1950 - 2022
     population = pd.read_csv("datasets/WPP2022_TotalPopulationBySex.csv", \
         dtype = {'Notes' : str, 'ISO3_code' : str, 'ISO2_code' : str, 'LocTypeName' : str})
@@ -11,6 +11,14 @@ def select_population(start, end):
     population.PopMale = np.multiply(population.PopMale, 10**3)
     population.PopFemale = np.multiply(population.PopFemale, 10**3)
     population = population.astype({'PopTotal' : 'int64'})
+    
+    population = population[population['ISO3_code'].notna()]
+    # interessano solo quelli con variant = Medium
+    population = population[population['Variant'] == variant]
+
+    # crea nuovo dataframe, con time come index
+    population = population.groupby(["Time"])[['PopTotal']].sum()
+    population = population.loc[:end]
 
     if start >= 1950:
         return population.loc[start:end]
@@ -26,16 +34,8 @@ def select_population(start, end):
     population_1800.set_index('Time', inplace=True)
     population_1800 = population_1800.loc[:1949]
 
-    pop_valid = population[population['ISO3_code'].notna()]
-    # interessano solo quelli con variant = Medium
-    pop_valid = pop_valid[pop_valid['Variant'] == 'Medium']
-
-    # crea nuovo dataframe, con time come index
-    summed = pop_valid.groupby(["Time"])[['PopTotal']].sum()
-    summed = summed.loc[:end]
-
     # concateno a summed i dati dal 1800 al 1949
-    summed = pd.concat([population_1800, summed])
+    summed = pd.concat([population_1800, population])
 
     if start >= 1800:
         return summed.loc[start:end]
